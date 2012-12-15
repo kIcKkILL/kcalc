@@ -278,10 +278,10 @@ void MainWindow::showWorkMode() {
       msg += " Hex";
       break;
     case OCT:
-      msg += "Oct";
+      msg += " Oct";
       break;
     case BIN:
-      msg += "Bin";
+      msg += " Bin";
       break;
   }
   ui->statusBar->showMessage(msg);
