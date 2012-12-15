@@ -35,9 +35,19 @@ private slots:
 
   void on_actionAbout_triggered();
 
+  void on_actionDec_triggered();
+
+  void on_actionOct_triggered();
+
+  void on_actionHex_triggered();
+
+  void on_actionBin_triggered();
+
 private:
   enum WorkMode { INSTANT, FINAL };
+  enum ResultMode { DEC, OCT, HEX, BIN };
   WorkMode work_mode;
+  ResultMode result_mode;
   // two work mode
 
   Ui::MainWindow *ui;

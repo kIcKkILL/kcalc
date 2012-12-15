@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
   // setup objects in mainwindow.ui
 
   work_mode = FINAL;
+  result_mode = DEC;
   exp_buffer_ = new QString;
 
   for(int i=1; i!=10; ++i) {
@@ -173,6 +174,8 @@ void MainWindow::equal_button_clicked() {
     emit(clear_input());
     ui->input_box->setText(QString::fromStdString(tmp));
     ui->result_display->display(temp_result);
+    result_buffer_ = temp_result;
+    *exp_buffer_ = QString::fromStdString(doubleToString(result_buffer_));
   } catch(const std::exception &e) {
     emit(clear_input());
     ui->statusBar->showMessage(e.what());
@@ -267,6 +270,20 @@ void MainWindow::wtf() {
 void MainWindow::showWorkMode() {
   QString msg = QString("Current work mode:")
       + (work_mode == INSTANT?"Instant":"Final");
+  switch (result_mode) {
+    case DEC:
+      msg += " Dec";
+      break;
+    case HEX:
+      msg += " Hex";
+      break;
+    case OCT:
+      msg += "Oct";
+      break;
+    case BIN:
+      msg += "Bin";
+      break;
+  }
   ui->statusBar->showMessage(msg);
 }
 
@@ -416,4 +433,32 @@ void MainWindow::addNum(QString &num_string) {
 void MainWindow::on_actionAbout_triggered()
 {
   emit(wtf());
+}
+
+void MainWindow::on_actionDec_triggered()
+{
+  result_mode = DEC;
+  ui->result_display->setMode(QLCDNumber::Dec);
+  showWorkMode();
+}
+
+void MainWindow::on_actionOct_triggered()
+{
+  result_mode = OCT;
+  ui->result_display->setMode(QLCDNumber::Oct);
+  showWorkMode();
+}
+
+void MainWindow::on_actionHex_triggered()
+{
+  result_mode = HEX;
+  ui->result_display->setMode(QLCDNumber::Hex);
+  showWorkMode();
+}
+
+void MainWindow::on_actionBin_triggered()
+{
+  result_mode = BIN;
+  ui->result_display->setMode(QLCDNumber::Bin);
+  showWorkMode();
 }

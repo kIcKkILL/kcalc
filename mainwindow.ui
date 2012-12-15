@@ -61,6 +61,9 @@
     <property name="numDigits">
      <number>16</number>
     </property>
+    <property name="mode">
+     <enum>QLCDNumber::Dec</enum>
+    </property>
     <property name="segmentStyle">
      <enum>QLCDNumber::Filled</enum>
     </property>
@@ -122,8 +125,18 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <widget class="QMenu" name="menuShow_result_in">
+     <property name="title">
+      <string>Show result in...</string>
+     </property>
+     <addaction name="actionHex"/>
+     <addaction name="actionDec"/>
+     <addaction name="actionOct"/>
+     <addaction name="actionBin"/>
+    </widget>
     <addaction name="actionCopy_the_result"/>
     <addaction name="actionSwitch_mode"/>
+    <addaction name="menuShow_result_in"/>
    </widget>
    <addaction name="edit_menu"/>
    <addaction name="about_menu"/>
@@ -142,6 +155,26 @@
   <action name="actionAbout">
    <property name="text">
     <string>About...</string>
+   </property>
+  </action>
+  <action name="actionDec">
+   <property name="text">
+    <string>Dec(default)</string>
+   </property>
+  </action>
+  <action name="actionOct">
+   <property name="text">
+    <string>Oct</string>
+   </property>
+  </action>
+  <action name="actionHex">
+   <property name="text">
+    <string>Hex</string>
+   </property>
+  </action>
+  <action name="actionBin">
+   <property name="text">
+    <string>Bin</string>
    </property>
   </action>
  </widget>
