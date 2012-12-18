@@ -150,8 +150,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::num_button_clicked() {
   QString num_string = this->sender()->property("text").toString();
-  if (num_string=="PI")
+  if (num_string=="PI") {
+    if ( exp_status_.dot_used )
+      return;
     num_string = QString::fromStdString(kPi_s);
+    exp_status_.dot_used = true;
+    exp_status_.post_dot_number = true;
+  }
   // get number
   addNum(num_string);
 }
