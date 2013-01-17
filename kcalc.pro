@@ -1,20 +1,22 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2012-12-11T14:06:12
-#
-#-------------------------------------------------
-
 QT       += core gui
 
 TARGET = kcalc
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    cCalcore.cpp
+SOURCES += src/main.cpp \
+           src/mainwindow.cpp \
+           src/cCalcore.cpp
 
-HEADERS  += mainwindow.h \
-    cCalcore.h
+HEADERS  += src/mainwindow.h \
+            src/cCalcore.h
 
-FORMS    += mainwindow.ui
+FORMS    += src/mainwindow.ui
+
+CONFIG(release, debug|release):DESTDIR = build/release
+CONFIG(debug, debug|release):DESTDIR = build/debug
+
+OBJECTS_DIR = $$DESTDIR/.obj
+MOC_DIR = $$DESTDIR/.moc
+RCC_DIR = $$DESTDIR/.rcc
+UI_DIR = $$DESTDIR/.ui
